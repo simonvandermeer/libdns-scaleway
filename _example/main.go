@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/libdns/libdns"
-	"github.com/libdns/scaleway"
+	"github.com/simonvandermeer/libdns-scaleway"
 )
 
 func main() {

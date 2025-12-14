@@ -1,4 +1,4 @@
-module github.com/libdns/scaleway
+module github.com/simonvandermeer/libdns-scaleway
 
 go 1.24
 
