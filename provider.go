@@ -25,6 +25,13 @@ func (p *Provider) GetRecords(ctx context.Context, zone string) ([]libdns.Record
 
 // AppendRecords adds records to the zone. It returns the records that were added.
 func (p *Provider) AppendRecords(ctx context.Context, zone string, records []libdns.Record) ([]libdns.Record, error) {
+	// Ensure TTL is set for Scaleway API requirement (defaults to 30s for ACME)
+	for i := range records {
+		if records[i].TTL == 0 {
+			records[i].TTL = 30 * time.Second
+		}
+	}
+
 	var appendedRecords []libdns.Record
 
 	for _, record := range records {
@@ -48,6 +55,13 @@ func (p *Provider) AppendRecords(ctx context.Context, zone string, records []lib
 // SetRecords sets the records in the zone, either by updating existing records or creating new ones.
 // It returns the updated records.
 func (p *Provider) SetRecords(ctx context.Context, zone string, records []libdns.Record) ([]libdns.Record, error) {
+	// Ensure TTL is set for Scaleway API requirement (defaults to 30s for ACME)
+	for i := range records {
+		if records[i].TTL == 0 {
+			records[i].TTL = 30 * time.Second
+		}
+	}
+
 	var setRecords []libdns.Record
 	for _, record := range records {
 		setRecord, err := p.updateDNSEntry(ctx, zone, record)
