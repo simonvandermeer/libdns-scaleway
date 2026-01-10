@@ -7,13 +7,18 @@ import (
 	"time"
 
 	"github.com/libdns/libdns"
-	"github.com/simonvandermeer/libdns-scaleway"
+	scaleway "github.com/simonvandermeer/libdns-scaleway"
 )
 
 func main() {
 	secretKey := os.Getenv("SECRET_KEY")
 	if secretKey == "" {
 		fmt.Printf("SECRET_KEY not set\n")
+		return
+	}
+	accessKey := os.Getenv("ACCESS_KEY")
+	if accessKey == "" {
+		fmt.Printf("ACCESS_KEY not set\n")
 		return
 	}
 	organisationID := os.Getenv("ORGANISATION_ID")
@@ -27,6 +32,7 @@ func main() {
 		return
 	}
 	provider := scaleway.Provider{
+		AccessKey:      accessKey,
 		SecretKey:      secretKey,
 		OrganizationID: organisationID,
 	}

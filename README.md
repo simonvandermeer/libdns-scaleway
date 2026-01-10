@@ -10,8 +10,11 @@ DNS records.
 
 To authenticate you need to supply following Scaleway credentials:
 
-- The Scaleway secret key (aka API key)
-- The Scaleway organization ID
+To authenticate you need to supply the following Scaleway credentials:
+
+- The Scaleway access key (public part of the API credentials) — set `ACCESS_KEY`
+- The Scaleway secret key (private part of the API credentials) — set `SECRET_KEY`
+- The Scaleway organization ID — set `ORGANISATION_ID`
 
 ## Example
 

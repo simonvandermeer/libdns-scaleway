@@ -9,6 +9,8 @@ import (
 
 type Provider struct {
 	Client
+	// AccessKey is the Scaleway access key (public part of the API credentials)
+	AccessKey      string `json:"access_key,omitempty"`
 	SecretKey      string `json:"secret_key,omitempty"`
 	OrganizationID string `json:"organization_id,omitempty"`
 }
